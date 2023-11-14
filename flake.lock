@@ -18,23 +18,6 @@
         "type": "github"
       }
     },
-    "flake-utils_2": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1694529238,
-        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
-        "type": "github"
-      },
-      "original": {
-        "id": "flake-utils",
-        "type": "indirect"
-      }
-    },
     "nix-filter": {
       "locked": {
         "lastModified": 1694857738,
@@ -47,6 +30,28 @@
       "original": {
         "owner": "numtide",
         "repo": "nix-filter",
+        "type": "github"
+      }
+    },
+    "nix-proto": {
+      "inputs": {
+        "nix-filter": "nix-filter",
+        "nix-std": "nix-std",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1699559374,
+        "narHash": "sha256-N4JKY0lSRNWJF4eHeNwM42njWkZx0AxUIkqouAFXx/k=",
+        "owner": "notalltim",
+        "repo": "nix-proto",
+        "rev": "6124d5443f7a116fcd87897e3068efeee894450f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "notalltim",
+        "repo": "nix-proto",
         "type": "github"
       }
     },
@@ -81,63 +86,14 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1685573264,
-        "narHash": "sha256-Zffu01pONhs/pqH07cjlF10NnMDLok8ix5Uk4rhOnZQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "380be19fbd2d9079f677978361792cb25e8a3635",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "release-22.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "protoGenerator": {
-      "inputs": {
-        "flake-utils": "flake-utils_2",
-        "nix-filter": "nix-filter",
-        "nix-std": "nix-std",
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1696864832,
-        "narHash": "sha256-GvpRL8A7QAPA0QRT7WmkxAX0h/bjuMaRpcz/Dtt6Dfw=",
-        "type": "git",
-        "url": "file:///home/tgallion/dev/proto-test"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///home/tgallion/dev/proto-test"
-      }
-    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "protoGenerator": "protoGenerator"
+        "nix-proto": "nix-proto",
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

@@ -2,21 +2,28 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-22.05";
     flake-utils.url = "github:numtide/flake-utils";
-    protoGenerator = { url = "git+file:///home/tgallion/dev/proto-test"; };
+    nix-proto.url = "github:notalltim/nix-proto";
+    nix-proto.inputs.nixpkgs.follows = "nixpkgs";
+
   };
-  outputs = { self, nixpkgs, flake-utils, protoGenerator, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, nix-proto, ... }@inputs:
     let
-      meta = protoGenerator.generateMeta {
-        name = "upstream";
+      namespace_meta = nix-proto.generateMeta {
+        name = "name";
         dir = ./proto;
         version = "1.0.0";
         protoDeps = [ ];
+        namespace = "outer/inner/namespaced";
       };
-
-      derivations = protoGenerator.generateDerivations { inherit meta; };
-      overlays = protoGenerator.generateOverlays { metas = [meta];};
+      meta = nix-proto.generateMeta {
+        name = "upstream";
+        dir = ./proto;
+        version = "1.0.0";
+        protoDeps = [ namespace_meta ];
+      };
+      overlays = nix-proto.generateOverlays { metas = [ meta namespace_meta ]; };
     in
-    flake-utils.lib.eachDefaultSystem (system: rec
+    { inherit overlays; inherit meta; inherit namespace_meta; } // flake-utils.lib.eachDefaultSystem (system: rec
     {
       legacyPackages = import nixpkgs { inherit system; inherit overlays; };
     });

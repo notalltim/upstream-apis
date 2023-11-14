@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package test_proto.v1.message;
+package upstream.v1.message;
 
 message Data {
   double data = 1;
