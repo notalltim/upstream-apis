@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-import "upstream/v1/message/data.proto";
-import "outer/inner/namespaced/test/v1/test.proto";
-
 package upstream.v1.service;
+
+import "outer/inner/namespaced/test/v1/test.proto";
+import "upstream/v1/message/data.proto";
 
 message Request {
   uint32 id = 1;
@@ -16,5 +16,5 @@ message Response {
 }
 
 service TestService {
-  rpc getResponse (Request) returns (Response);
+  rpc GetResponse (Request) returns (Response);
 }
